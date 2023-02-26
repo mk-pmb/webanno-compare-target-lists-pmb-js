@@ -23,19 +23,22 @@ Ideally, the `target` values conform to the Web Annotation Data Model.
 
 Returns a report, which is an object with these keys:
 * `removed`:
-  Array of strings that hold JSON representations of targets that occurr
-  only in `oldAnno`.
+  Array of of targets that occurr only in `oldAnno`.
 * `added`:
-  Array of strings that hold JSON representations of targets that occurr
-  only in `newAnno`.
+  Array of targets that occurr only in `newAnno`.
 * `commonInOld`:
-  Array of strings that hold JSON representations of targets that occurr
-  in both annotations, in the order they were found in `oldAnno`.
+  Array of targets that occurr in both annotations,
+  in the order they were found in `oldAnno`.
 * `commonInNew`:
-  Array of strings that hold JSON representations of targets that occurr
-  in both annotations, in the order they were found in `oldAnno`.
+  Array of targets that occurr in both annotations,
+  in the order they were found in `oldAnno`.
+* `commonSameOrder`:
+  Boolean, whether the lists of common targets are in same ordering.
+  If there are no common targets, they are considered in same order.
 * `reordered`:
   Boolean, whether the lists of common targets differ in ordering.
+  Opposite of `commonSameOrder`. They come as a pair to help you make
+  your script fail more safely in case of future API changes.
 
 
 

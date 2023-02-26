@@ -11,26 +11,30 @@ function jsonizeTargets(anno) {
 const EX = function compareTargetLists(oldAnno, newAnno) {
   const oldTgtList = jsonizeTargets(oldAnno);
   const newTgtList = jsonizeTargets(newAnno);
-  const cmO = [];
-  const cmN = [];
+  const commonJsonOld = [];
+  const commonJsonNew = [];
   const diff = {
     removed: [],
     added: [],
-    commonInOld: cmO,
-    commonInNew: cmN,
+    commonInOld: [],
+    commonInNew: [],
   };
 
-  function side(list, other, common, only) {
+  function side(list, other, commonUnpacked, commonJson, only) {
     list.forEach(function learn(tg) {
       const un = JSON.parse(tg);
-      if (other.includes(tg)) { return common.push(un); }
+      if (other.includes(tg)) {
+        commonJson.push(tg);
+        return commonUnpacked.push(un);
+      }
       only.push(un);
     });
   }
 
-  side(oldTgtList, newTgtList, cmO, diff.removed);
-  side(newTgtList, oldTgtList, cmN, diff.added);
-  diff.reordered = (cmO.join('\n') !== cmN.join('\n'));
+  side(oldTgtList, newTgtList, diff.commonInOld, commonJsonOld, diff.removed);
+  side(newTgtList, oldTgtList, diff.commonInNew, commonJsonNew, diff.added);
+  diff.commonSameOrder = (commonJsonOld.join(',') === commonJsonNew.join(','));
+  diff.reordered = !diff.commonSameOrder;
 
   return diff;
 };
