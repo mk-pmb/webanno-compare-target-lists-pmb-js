@@ -1,5 +1,5 @@
 { "name": "webanno-compare-target-lists-pmb",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Compare target lists of web annotations.",
   "keywords": [],
 
@@ -22,14 +22,14 @@
   "eslintConfig": { "extends": "nodejs-pmb" },
 
   "dependencies": {
-    "safe-sortedjson": "^1.0.8"
+    "safe-sortedjson": "^1.0.9"
   },
   "devDependencies": {
-    "eslint-config-nodejs-pmb": "^0.3.5",
+    "eslint-config-nodejs-pmb": "^0.3.13",
     "eslint-plugin-json-light-pmb": "^1.0.7",
-    "eslint-plugin-n": "^15.2.4",
-    "eslint-pretty-pmb": "^1.0.5",
-    "nodemjs": "^0.1.13"
+    "eslint-plugin-n": "^17.16.2",
+    "eslint-pretty-pmb": "^1.0.7",
+    "nodemjs": "^0.1.16"
   },
 
 
